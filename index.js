@@ -125,12 +125,6 @@ app.delete('/api/messages/:id' , function (req, res) {
 });
 
 app.get('/details/:id', function(req, res){
-    var id = parseInt(req.params.id);
-
-    if (id == null){
-        return res.sendStatus(400);
-    }
-
 
     res.render('detail.html', {
 

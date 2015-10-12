@@ -33,10 +33,18 @@
                 <label>Description</label>
                 <input type="text" name="description" placeholder="Description" ng-model="message.description">
             </div>
-            <button class="ui button red" type="submit">Delete</button>
-            <button class="ui button green" type="submit">Save</button>
+            <button class="ui button red" ng-click="delete()">Delete</button>
+            <button class="ui button green" ng-click="save()">Save</button>
         </form>
     </div>
+
+    <div class="ui left icon action input">
+        <div class="ui teal labeled icon button" ng-click="home()">
+            Home
+            <i class="add icon"></i>
+        </div>
+    </div>
+
 </div>
 
 <script src="/static/vendor/angular/angular.min.js"></script>
