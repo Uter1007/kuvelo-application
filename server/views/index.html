@@ -9,6 +9,7 @@
     <meta name="author" content="Uter">
 
     <link rel="stylesheet" type="text/css" href="/static/vendor/semantic/dist/semantic.min.css">
+    <script src="/static/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/static/vendor/semantic/dist/semantic.min.js"></script>
 
     <!--[if lt IE 9]>
@@ -18,13 +19,13 @@
 
 <body>
 
-<div class="utercontainer" style="padding-top: 20px;">
+<div class="utercontainer" style="padding-top: 20px;" ng-app="app">
 
     <h1 class="ui center aligned header">Demo</h1>
 
 
 
-    <div class="ui container">
+    <div class="ui container" ng-controller="messageCtrl">
 
         <div class="ui center aligned basic segment">
             <div class="ui left icon action input">
@@ -38,18 +39,14 @@
             </div>
 
             <div class="ui stackable four column grid">
-                <div class="column">
-                    <a class="ui card" href="http://www.dog.com">
+                <div class="column" ng-repeat="message in messages">
+                    <a class="ui card" href="/details/{{message.cid}}">
                         <div class="content">
-                            <div class="header"></div>
-                            <div class="meta"></div>
+                            <div class="header">{{message.name}}</div>
+                            <div class="meta">{{message.details}}</div>
                             <div class="description">
-
+                                {{message.description}}
                             </div>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="erase icon"></i>
-                            Delete
                         </div>
                     </a>
                 </div>
@@ -57,8 +54,8 @@
         </div>
     </div>
 </div>
-
-    <script src="/static/vendor/angular/angular.min.js"></script>
+<script src="/static/vendor/angular/angular.min.js"></script>
+<script src="/static/vendor/angular-route/angular-route.min.js"></script>
 <script src="/static/js/scripts.js"></script>
 </body>
 </html>
