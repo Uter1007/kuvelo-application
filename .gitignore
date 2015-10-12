@@ -307,3 +307,6 @@ FakesAssemblies/
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
 
+/Bower
+/public/vendor/
+
