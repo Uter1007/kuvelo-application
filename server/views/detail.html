@@ -8,8 +8,8 @@
     <meta name="description" content="Kuvelo Demo">
     <meta name="author" content="Uter">
 
-    <link rel="stylesheet" type="text/css" href="/vendor/semantic/dist/semantic.min.css">
-    <script src="/vendor/semantic/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/semantic/dist/semantic.min.css">
+    <script src="/static/vendor/semantic/dist/semantic.min.js"></script>
 
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,7 +17,29 @@
 </head>
 
 <body>
-<script src="/vendor/angular/angular.min.js"></script>
-<script src="js/scripts.js"></script>
+
+<div class="utercontainer" style="padding-top: 20px;">
+
+    <h1 class="ui center aligned header">Demo Detailseite</h1>
+
+    <div class="ui container">
+        <form class="ui form">
+            <div class="field">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Name">
+            </div>
+            <div class="field">
+                <label>Description</label>
+                <input type="text" name="description" placeholder="Description">
+            </div>
+            <button class="ui button" type="submit">Speichern</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="/static/vendor/angular/angular.min.js"></script>
+<script src="/static/js/scripts.js"></script>
 </body>
 </html>
