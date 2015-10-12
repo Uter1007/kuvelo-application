@@ -23,8 +23,6 @@
 
     <h1 class="ui center aligned header">Demo</h1>
 
-
-
     <div class="ui container" ng-controller="messageCtrl">
 
         <div class="ui center aligned basic segment">
@@ -40,7 +38,7 @@
 
             <div class="ui stackable four column grid">
                 <div class="column" ng-repeat="message in messages">
-                    <a class="ui card" href="/details/{{message.cid}}">
+                    <a class="ui card" ng-click="go(message.cid)">
                         <div class="content">
                             <div class="header">{{message.name}}</div>
                             <div class="meta">{{message.details}}</div>

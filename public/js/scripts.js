@@ -40,11 +40,17 @@
 
     }]);
 
-    app.controller('messageDetailCtrl', ['$scope','$location' ,'messageService', '$window', function($scope, $location, messageService, window){
+    app.controller('messageDetailCtrl', ['$scope','$location' ,'messageService', '$window', function($scope, $location, messageService, $window){
 
         $scope.message = null;
         $scope.status = null;
+        $scope.statusmsg = null;
+        $scope.statuscode = null;
         $scope.id = null;
+
+        $scope.home = function(){
+            $window.location.href = '/';
+        }
 
 
         function update(message){
@@ -52,9 +58,14 @@
                 .success(function (message) {
                     console.log("Success");
                     $scope.status = "Success";
+                    $scope.statusmsg = "Success";
+                    $scope.statuscode = 'success';
                 })
                 .error(function (error) {
                     $scope.status = 'Unable to load messages: ' + error.message;
+                    $scope.statusmsg = 'Unable to load messages: ' + error.message;
+                    $scope.statuscode = 'error';
+
                 });
         }
 
@@ -63,9 +74,13 @@
                 .success(function (message) {
                     console.log("Success");
                     $scope.status = "Success";
+                    $scope.statusmsg = "Success";
+                    $scope.statuscode = 'success';
                 })
                 .error(function (error) {
                     $scope.status = 'Unable to load messages: ' + error.message;
+                    $scope.statusmsg = 'Unable to load messages: ' + error.message;
+                    $scope.statuscode = 'error';
                 });
         }
 
@@ -74,9 +89,14 @@
                 .success(function (message) {
                     console.log("Success");
                     $scope.status = "Success";
+                    $scope.statusmsg = "Success";
+                    $scope.statuscode = 'warning';
+                    $scope.message = null;
                 })
                 .error(function (error) {
                     $scope.status = 'Unable to load messages: ' + error.message;
+                    $scope.statusmsg = 'Unable to load messages: ' + error.message;
+                    $scope.statuscode = 'error';
                 });
         }
 
@@ -130,6 +150,10 @@
 
         $scope.createMessage = function(){
             $window.location.href = '/details/add';
+        }
+
+        $scope.go = function(id){
+            $window.location.href = '/details/'+id;
         }
 
         function loadMessages(){

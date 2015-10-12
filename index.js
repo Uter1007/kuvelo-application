@@ -57,7 +57,7 @@ app.get('/api/messages' , function (req, res) {
 
 app.get('/api/messages/:id' , function (req, res) {
 
-    console.log("Retieve: "+req.params.id);
+    console.log("Retrieve: "+req.params.id);
     var id = parseInt(req.params.id);
 
     if (id == null){
