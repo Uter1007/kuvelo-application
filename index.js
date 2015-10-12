@@ -17,14 +17,14 @@ var db = new locallydb('./mydb');
 // load the collection (file) in './mydb/messages', will be created if doesn't exist
 var collection = db.collection('messages');
 
-//Demodata
-collection.insert([
-    {name: "message1", description: "This is a Test 1"},
-    {name: "message2", description: "This is a Test 2"},
-    {name: "message3", description: "This is a Test 3"}
-]);
+////Demodata
+//collection.insert([
+//    {name: "message1", description: "This is a Test 1"},
+//    {name: "message2", description: "This is a Test 2"},
+//    {name: "message3", description: "This is a Test 3"}
+//]);
 
-collection.save();
+//collection.save();
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -56,14 +56,22 @@ app.get('/api/messages' , function (req, res) {
 });
 
 app.get('/api/messages/:id' , function (req, res) {
-    var id = req.params.id;
+    var id = parseInt(req.params.id);
+
+    if (id == null){
+        return res.sendStatus(400);
+    }
+
     var message = collection.get(id);
     res.send(message);
 });
 
 app.post('/api/messages' , function (req, res) {
     console.log(req.body);
-    var jsondata = JSON.parse(req.body);
+
+    if (!req.body) return res.sendStatus(400);
+
+    var jsondata = req.body;
 
     collection.insert(jsondata);
     collection.save();
@@ -73,10 +81,28 @@ app.post('/api/messages' , function (req, res) {
 });
 
 app.put('/api/messages/:id' , function (req, res) {
-    console.log(req.body);
-    var id = req.params.id;
-    var jsondata = JSON.parse(req.body);
+
+
+    if (!req.body) return res.sendStatus(400);
+
+    var id = parseInt(req.params.id);
+
+    if (id == null){
+        return res.sendStatus(400);
+    }
+
+    var jsondata = req.body;
+
+    console.log("Update: "+ jsondata);
+
+    console.log("ID: "+ id);
+
     collection.update(id, jsondata);
+
+    var temp = collection.get(id);
+
+    console.log(temp);
+
     collection.save();
 
     res.end();
@@ -84,7 +110,12 @@ app.put('/api/messages/:id' , function (req, res) {
 });
 
 app.delete('/api/messages/:id' , function (req, res) {
-    var id = req.params.id;
+    var id = parseInt(req.params.id);
+
+    if (id == null){
+        return res.sendStatus(400);
+    }
+
     collection.remove(id);
     collection.save();
 
@@ -92,7 +123,12 @@ app.delete('/api/messages/:id' , function (req, res) {
 });
 
 app.get('/detail/:id', function(req, res){
-    var id = req.params.id;
+    var id = parseInt(req.params.id);
+
+    if (id == null){
+        return res.sendStatus(400);
+    }
+
 
     res.render('detail.html', {
 
