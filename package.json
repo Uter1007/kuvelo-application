@@ -18,6 +18,6 @@
     "locallydb": "0.0.9",
     "method-override": "^2.3.5",
     "morgan": "^1.6.1",
-    "protractor": "^2.5.1"
+    "protractor": "^4.0.6"
   }
 }
